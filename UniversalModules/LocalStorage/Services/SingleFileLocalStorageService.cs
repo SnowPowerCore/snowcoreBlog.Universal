@@ -3,7 +3,7 @@ using snowcoreBlog.LocalStorage.Interfaces;
 
 namespace snowcoreBlog.LocalStorage.Services;
 
-public class LocalStorageService(Hanssens.Net.ILocalStorage localStorageImpl) : ILocalStorageService
+public class SingleFileLocalStorageService(Hanssens.Net.ILocalStorage localStorageImpl) : ILocalStorageService
 {
     public bool HasKey(string possibleKey) => localStorageImpl.Exists(possibleKey);
 

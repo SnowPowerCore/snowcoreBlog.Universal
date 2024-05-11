@@ -6,11 +6,11 @@ using snowcoreBlog.VersionTracking.Interfaces;
 
 namespace snowcoreBlog.VersionTracking.Services;
 
-public class VersionTrackingService : IVersionTrackingService
+public class LocalVersionTrackingService : IVersionTrackingService
 {
-    private const string VersionTrailKey = $"{nameof(VersionTrackingService)}.Trail";
-    private const string VersionsKey = $"{nameof(VersionTrackingService)}.Versions";
-    private const string BuildsKey = $"{nameof(VersionTrackingService)}.Builds";
+    private const string VersionTrailKey = $"{nameof(LocalVersionTrackingService)}.Trail";
+    private const string VersionsKey = $"{nameof(LocalVersionTrackingService)}.Versions";
+    private const string BuildsKey = $"{nameof(LocalVersionTrackingService)}.Builds";
 
     private readonly ILocalStorageService _localStorage;
 
@@ -18,7 +18,7 @@ public class VersionTrackingService : IVersionTrackingService
 
     private DictionaryWithDefault<string, List<string>> _versionTrail;
 
-    public VersionTrackingService(ILocalStorageService localStorage)
+    public LocalVersionTrackingService(ILocalStorageService localStorage)
     {
         _localStorage = localStorage;
 

@@ -5,13 +5,13 @@ using MinimalStepifiedSystem.Utils;
 using snowcoreBlog.ResourceLoading.Interfaces;
 using snowcoreBlog.ResourceLoading.Models;
 
-namespace SampleNETConsoleApp.App.Services;
+namespace snowcoreBlog.ResourceLoading.Services;
 
-public class ResourceService : IResourceService
+public class JsonLocalResourceService : IResourceService
 {
     private readonly Dictionary<string, JsonLocalization[]> _localization = [];
 
-    public ResourceService(IOptions<ResourceSettings> resourceSettings)
+    public JsonLocalResourceService(IOptions<ResourceSettings> resourceSettings)
     {
         if (resourceSettings.Value.UseBase)
             PopulateLocalization("Resources");

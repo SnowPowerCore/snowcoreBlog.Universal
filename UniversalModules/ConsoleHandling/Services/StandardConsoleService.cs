@@ -1,8 +1,11 @@
-﻿using snowcoreBlog.ConsoleHandle.Interfaces;
+﻿using snowcoreBlog.ConsoleHandling.Interfaces;
 
-namespace snowcoreBlog.ConsoleHandle.Services;
+namespace snowcoreBlog.ConsoleHandling.Services;
 
-public class ConsoleService : IConsoleService
+/// <summary>
+/// .NET Standard Console
+/// </summary>
+public class StandardConsoleService : IConsoleService
 {
     public string? ReadLine() =>
         Console.ReadLine();

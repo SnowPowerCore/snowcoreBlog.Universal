@@ -1,4 +1,4 @@
-﻿namespace snowcoreBlog.ConsoleHandle.Interfaces;
+﻿namespace snowcoreBlog.ConsoleHandling.Interfaces;
 
 public interface IConsoleService
 {

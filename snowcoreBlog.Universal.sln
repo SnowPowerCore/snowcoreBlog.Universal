@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "snowcoreBlog.PublicApi", "P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "snowcoreBlog.ApplicationLaunch", "UniversalModules\ApplicationLaunch\snowcoreBlog.ApplicationLaunch.csproj", "{01330948-C62B-4098-82E3-BEAF47804040}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "snowcoreBlog.ConsoleHandle", "UniversalModules\ConsoleHandle\snowcoreBlog.ConsoleHandle.csproj", "{5D869809-06B4-4FC1-B1B7-26BB128A09B9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "snowcoreBlog.ConsoleHandling", "UniversalModules\ConsoleHandling\snowcoreBlog.ConsoleHandling.csproj", "{5D869809-06B4-4FC1-B1B7-26BB128A09B9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "snowcoreBlog.HttpClientInterception", "UniversalModules\HttpClientInterception\snowcoreBlog.HttpClientInterception.csproj", "{62E38FEC-5808-4F26-89AF-432D4E3A1F68}"
 EndProject
@@ -18,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "snowcoreBlog.VersionTracking", "UniversalModules\VersionTracking\snowcoreBlog.VersionTracking.csproj", "{9D57A7F4-4139-4654-89CE-36FBEDA4DD73}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "snowcoreBlog.LocalStorage", "UniversalModules\LocalStorage\snowcoreBlog.LocalStorage.csproj", "{8B831964-3302-4584-9919-BAFE8112AF30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "snowcoreBlog.TelemetryHandling", "UniversalModules\TelemetryHandling\snowcoreBlog.TelemetryHandling.csproj", "{8DFB23E1-1045-4D02-962A-8AD933934704}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{8B831964-3302-4584-9919-BAFE8112AF30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B831964-3302-4584-9919-BAFE8112AF30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B831964-3302-4584-9919-BAFE8112AF30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DFB23E1-1045-4D02-962A-8AD933934704}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DFB23E1-1045-4D02-962A-8AD933934704}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DFB23E1-1045-4D02-962A-8AD933934704}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DFB23E1-1045-4D02-962A-8AD933934704}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

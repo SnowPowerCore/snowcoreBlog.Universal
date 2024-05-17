@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="LocalStorage" Version="2.1.0" />
     <PackageReference Include="Fody" Version="6.8.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
@@ -15,11 +16,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LocalStorage\snowcoreBlog.LocalStorage.csproj" />
+    <None Update="**/FodyWeavers.*" Visible="false" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="**/FodyWeavers.*" Visible="false" />
+    <ProjectReference Include="..\LocalStorage\snowcoreBlog.LocalStorage.csproj" />
   </ItemGroup>
 
 </Project>

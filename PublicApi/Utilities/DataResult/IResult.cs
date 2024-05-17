@@ -1,30 +1,15 @@
-using System.Diagnostics.CodeAnalysis;
+﻿namespace snowcoreBlog.PublicApi.Utilities.DataResult;
 
-namespace snowcoreBlog.PublicApi.Utilities.DataResult;
+public interface IResult { }
 
-/// <summary>Defines a result.</summary>
-public interface IResult
+public interface IResult<out T> : IResult
 {
-    /// <summary>Gets a collection of errors associated with the result.</summary>
-    /// <returns>An <see cref="IReadOnlyCollection{T}"/> of <see cref="IError"/> representing the errors.</returns>
-    IReadOnlyCollection<IError> Errors { get; }
+    IResult ToResult();
+}
 
-    /// <summary>Gets whether the result was successful or not.</summary>
-    /// <returns><c>true</c> if the result was successful; otherwise, <c>false</c>.</returns>
-    bool IsSuccess();
+public abstract record Result
+{
+    public static IResult Success() => SuccessResult.Instance;
 
-    /// <summary>Gets whether the result failed or not.</summary>
-    /// <returns><c>true</c> if the result failed; otherwise, <c>false</c>.</returns>
-    bool IsFailed();
-
-    /// <summary>Gets whether the result failed or not.</summary>
-    /// <param name="error">The error of the result.</param>
-    /// <returns><c>true</c> if the result failed; otherwise, <c>false</c>.</returns>
-    bool IsFailed([MaybeNullWhen(false)] out IError error);
-
-    /// <summary>Checks if the result contains an error of the specific type.</summary>
-    /// <typeparam name="TError">The type of error to check for.</typeparam>
-    /// <returns><c>true</c> if an error of the specified type is present; otherwise, <c>false</c>.</returns>
-    bool HasError<TError>()
-        where TError : IError;
+    public static IResult<T> Success<T>(T data) => new SuccessResult<T>(data);
 }

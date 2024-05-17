@@ -15,11 +15,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LocalStorage\snowcoreBlog.LocalStorage.csproj" />
+    <None Update="**/FodyWeavers.*" Visible="false" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="**/FodyWeavers.*" Visible="false" />
+    <ProjectReference Include="..\ConsoleHandling\snowcoreBlog.ConsoleHandling.csproj" />
   </ItemGroup>
 
 </Project>

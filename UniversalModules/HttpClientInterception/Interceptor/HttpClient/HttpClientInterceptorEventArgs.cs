@@ -11,7 +11,7 @@ public class HttpClientInterceptorEventArgs : EventArgs
 
     private HttpContentHeaders _capturedContentHeaders;
 
-    internal Task _asyncTask = Task.CompletedTask;
+    public Task AsyncTask { get; private set; } = Task.CompletedTask;
 
     /// <summary>
     /// The HttpRequestMessage object uses or used sending HTTP request.
@@ -67,8 +67,8 @@ public class HttpClientInterceptorEventArgs : EventArgs
 
         if (_capturedContentBytes == null)
         {
-            _asyncTask = CaptureContentAsync();
-            await _asyncTask;
+            AsyncTask = CaptureContentAsync();
+            await AsyncTask;
         }
 
         var httpContent = new ReadOnlyMemoryContent(_capturedContentBytes);

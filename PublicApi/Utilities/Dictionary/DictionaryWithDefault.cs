@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace snowcoreBlog.PublicApi.Utilities.Dictionary;
 
-public class DictionaryWithDefault<TKey, TValue>(TValue defaultValue) : Dictionary<TKey, TValue> where TKey : notnull
+public sealed class DictionaryWithDefault<TKey, TValue>(TValue defaultValue) : Dictionary<TKey, TValue> where TKey : notnull
 {
     public TValue DefaultValue { get; init; } = defaultValue;
 

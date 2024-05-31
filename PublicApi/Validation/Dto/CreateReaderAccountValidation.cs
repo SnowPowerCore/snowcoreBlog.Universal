@@ -2,7 +2,7 @@
 
 namespace snowcoreBlog.PublicApi;
 
-public class CreateReaderAccountValidation : AbstractValidator<CreateReaderAccountDto>
+public sealed class CreateReaderAccountValidation : AbstractValidator<CreateReaderAccountDto>
 {
     public CreateReaderAccountValidation()
     {

@@ -1,6 +1,6 @@
 ﻿namespace snowcoreBlog.PublicApi;
 
-public record CreateReaderAccountDto(
+public sealed record CreateReaderAccountDto(
     string Email,
     string Password,
     bool ConfirmedAgreement,

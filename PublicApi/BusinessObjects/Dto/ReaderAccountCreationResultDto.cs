@@ -1,3 +1,3 @@
 ﻿namespace snowcoreBlog.PublicApi;
 
-public record ReaderAccountCreationResultDto(Guid Id);
+public sealed record ReaderAccountCreationResultDto(Guid Id);

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace snowcoreBlog.PublicApi;
+namespace snowcoreBlog.PublicApi.Extensions;
 
 public static class JsonExtensions
 {

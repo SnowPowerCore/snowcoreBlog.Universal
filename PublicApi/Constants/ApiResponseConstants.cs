@@ -1,4 +1,4 @@
-﻿namespace snowcoreBlog.PublicApi;
+﻿namespace snowcoreBlog.PublicApi.Constants;
 
 public sealed class ApiResponseConstants
 {

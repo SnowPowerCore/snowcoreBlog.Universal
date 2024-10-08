@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using Results;
 
-namespace snowcoreBlog.PublicApi;
+namespace snowcoreBlog.PublicApi.Extensions;
 
 public static class StatusCodeExtensions
 {

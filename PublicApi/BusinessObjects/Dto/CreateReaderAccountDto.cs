@@ -1,8 +1,7 @@
-﻿namespace snowcoreBlog.PublicApi;
+﻿namespace snowcoreBlog.PublicApi.BusinessObjects.Dto;
 
 public sealed record CreateReaderAccountDto(
     string Email,
-    string Password,
     bool ConfirmedAgreement,
     string NickName = "",
     string FirstName = "",

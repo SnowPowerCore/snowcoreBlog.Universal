@@ -1,7 +1,8 @@
 ﻿using Results;
+using snowcoreBlog.PublicApi.Constants;
 using snowcoreBlog.PublicApi.Utilities.Api;
 
-namespace snowcoreBlog.PublicApi;
+namespace snowcoreBlog.PublicApi.Extensions;
 
 public static class ApiResponseExtensions
 {

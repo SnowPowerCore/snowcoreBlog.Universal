@@ -1,6 +1,6 @@
 ﻿using Results;
 
-namespace snowcoreBlog.PublicApi;
+namespace snowcoreBlog.PublicApi.Utilities.DataResult;
 
 public sealed record DataResult<TValue>(TValue? Value = default, List<ErrorResultDetail> Errors = default)
 {

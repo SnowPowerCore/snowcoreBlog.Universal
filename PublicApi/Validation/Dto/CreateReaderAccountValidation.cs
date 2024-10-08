@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
+using snowcoreBlog.PublicApi.BusinessObjects.Dto;
 
-namespace snowcoreBlog.PublicApi;
+namespace snowcoreBlog.PublicApi.Validation.Dto;
 
 public sealed class CreateReaderAccountValidation : AbstractValidator<CreateReaderAccountDto>
 {

@@ -8,5 +8,8 @@ public sealed class CreateReaderAccountValidation : AbstractValidator<CreateRead
     public CreateReaderAccountValidation()
     {
         RuleFor(x => x.NickName).NotEmpty();
+        RuleFor(x => x.Email).NotEmpty();
+        RuleFor(x => x.FirstName).NotEmpty();
+        RuleFor(x => x.ConfirmedAgreement).Equal(true);
     }
 }

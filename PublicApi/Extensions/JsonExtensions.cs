@@ -4,8 +4,6 @@ namespace snowcoreBlog.PublicApi.Extensions;
 
 public static class JsonExtensions
 {
-    private static readonly JsonSerializerOptions _serializerOptions = new(JsonSerializerDefaults.Web);
-
-    public static JsonElement ToJsonElement(this object @object) =>
-        JsonSerializer.SerializeToElement(@object, _serializerOptions);
+    public static JsonElement ToJsonElement(this object @object, JsonSerializerOptions options) =>
+        JsonSerializer.SerializeToElement(@object, options);
 }

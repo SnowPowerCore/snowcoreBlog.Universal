@@ -17,7 +17,10 @@ public static class ApiResponseExtensions
         }
         else if (result is IErrorResult<T> error)
         {
-            return new(default, 0, -1, error.Errors.Select(x => $"{x.Code}: {x.Details}").ToList());
+            var errors = error.Errors.Select(x => $"{x.Code}: {x.Details}").ToList();
+            if (errors.Count == 0)
+                errors.Add(error.Message);
+            return new(default, 0, -1, errors);
         }
         else
         {

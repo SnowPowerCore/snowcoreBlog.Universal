@@ -1,10 +1,10 @@
 ﻿namespace snowcoreBlog.PublicApi.BusinessObjects.Dto;
 
-public sealed record CreateReaderAccountDto(
+public sealed record RequestCreateReaderAccountDto(
     string Email,
+    string FirstName,
+    string NickName,
     bool ConfirmedAgreement,
-    string NickName = "",
-    string FirstName = "",
     string LastName = "",
     string PhoneNumber = "",
-    bool Subscribed = false);
+    bool InitialEmailConsent = true);

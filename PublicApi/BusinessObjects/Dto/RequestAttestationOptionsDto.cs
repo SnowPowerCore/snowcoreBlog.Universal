@@ -2,7 +2,7 @@
 
 namespace snowcoreBlog.PublicApi.BusinessObjects.Dto;
 
-public sealed record RequestAttestationOptionsForRegistrationDto(
+public sealed record RequestAttestationOptionsDto(
     string Email, string VerificationToken, AuthenticatorAttachment? AuthenticatorAttachment,
     AttestationConveyancePreference AttestationType = AttestationConveyancePreference.None,
     ResidentKeyRequirement ResidentKey = ResidentKeyRequirement.Discouraged,

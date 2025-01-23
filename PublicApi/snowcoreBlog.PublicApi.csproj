@@ -31,7 +31,7 @@
 
   <ItemGroup>
     <None Update="**/FodyWeavers.*" Visible="false" />
-    <None Update="**/.refitter" Visible="false" />
+    <None Update="**/.refitter*" Visible="false" />
   </ItemGroup>
 
 </Project>

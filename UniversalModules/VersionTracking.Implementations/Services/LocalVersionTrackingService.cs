@@ -8,7 +8,6 @@ namespace snowcoreBlog.VersionTracking.Implementations.Services;
 
 public class LocalVersionTrackingService : IVersionTrackingService
 {
-    private const string VersionTrailKey = $"{nameof(LocalVersionTrackingService)}.Trail";
     private const string VersionsKey = $"{nameof(LocalVersionTrackingService)}.Versions";
     private const string BuildsKey = $"{nameof(LocalVersionTrackingService)}.Builds";
 
@@ -16,15 +15,18 @@ public class LocalVersionTrackingService : IVersionTrackingService
 
     private static readonly char[] _separator = ['|'];
 
-    private DictionaryWithDefault<string, List<string>> _versionTrail;
+    private DictionaryWithDefault<string, List<string>> _versionTrail = [];
 
     public LocalVersionTrackingService(ILocalStorageService localStorage)
     {
         _localStorage = localStorage;
 
         var version = Assembly.GetCallingAssembly().GetName().Version;
-        CurrentVersion = version?.ToString();
-        CurrentBuild = version?.Build.ToString();
+        if (version is not default(Version))
+        {
+            CurrentVersion = version.ToString();
+            CurrentBuild = version.Build.ToString();
+        }
 
         InitVersionTracking();
 
@@ -34,8 +36,8 @@ public class LocalVersionTrackingService : IVersionTrackingService
         FirstInstalledBuild = _versionTrail[BuildsKey].FirstOrDefault();
         LastInstalledVersion = _versionTrail[VersionsKey].LastOrDefault();
         LastInstalledBuild = _versionTrail[BuildsKey].LastOrDefault();
-        VersionHistory = [.. _versionTrail[VersionsKey]];
-        BuildHistory = [.. _versionTrail[BuildsKey]];
+        VersionHistory = _versionTrail[VersionsKey];
+        BuildHistory = _versionTrail[BuildsKey];
     }
 
     public bool IsFirstLaunchEver { get; private set; }
@@ -44,21 +46,21 @@ public class LocalVersionTrackingService : IVersionTrackingService
 
     public bool IsFirstLaunchForCurrentBuild { get; private set; }
 
-    public string CurrentVersion { get; private set; }
+    public string CurrentVersion { get; private set; } = "1.0.0";
 
-    public string CurrentBuild { get; private set; }
+    public string CurrentBuild { get; private set; } = "1";
 
-    public string PreviousVersion { get; private set; }
+    public string? PreviousVersion { get; private set; }
 
-    public string PreviousBuild { get; private set; }
+    public string? PreviousBuild { get; private set; }
 
-    public string FirstInstalledVersion { get; private set; }
+    public string? FirstInstalledVersion { get; private set; }
 
-    public string FirstInstalledBuild { get; private set; }
+    public string? FirstInstalledBuild { get; private set; }
 
-    private string LastInstalledVersion { get; set; }
+    private string? LastInstalledVersion { get; set; }
 
-    private string LastInstalledBuild { get; set; }
+    private string? LastInstalledBuild { get; set; }
 
     public IEnumerable<string> VersionHistory { get; private set; }
 
@@ -93,8 +95,8 @@ public class LocalVersionTrackingService : IVersionTrackingService
         {
             _versionTrail = new(defaultValue: [])
             {
-                [VersionsKey] = [.. ReadHistory(VersionsKey)],
-                [BuildsKey] = [.. ReadHistory(BuildsKey)]
+                [VersionsKey] = ReadHistory(VersionsKey).ToList(),
+                [BuildsKey] = ReadHistory(BuildsKey).ToList()
             };
         }
 
@@ -148,7 +150,7 @@ public class LocalVersionTrackingService : IVersionTrackingService
     private void WriteHistory(string key, IEnumerable<string> history) =>
         _localStorage.Set(key, string.Join("|", history));
 
-    private string GetPrevious(string key)
+    private string? GetPrevious(string key)
     {
         var trail = _versionTrail[key];
         return trail.Count >= 2 ? trail[trail.Count - 2] : default;

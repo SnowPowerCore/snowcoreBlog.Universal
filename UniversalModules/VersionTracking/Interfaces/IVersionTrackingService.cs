@@ -12,13 +12,13 @@ public interface IVersionTrackingService
 
     string CurrentBuild { get; }
 
-    string PreviousVersion { get; }
+    string? PreviousVersion { get; }
 
-    string PreviousBuild { get; }
+    string? PreviousBuild { get; }
 
-    string FirstInstalledVersion { get; }
+    string? FirstInstalledVersion { get; }
 
-    string FirstInstalledBuild { get; }
+    string? FirstInstalledBuild { get; }
 
     public IEnumerable<string> VersionHistory { get; }
 

@@ -2,5 +2,5 @@
 
 public static class HeaderKeyConstants
 {
-    public const string AltchaCaptchaHeader = ".Altcha.Solution";
+    public const string CaptchaHeader = "Captcha";
 }

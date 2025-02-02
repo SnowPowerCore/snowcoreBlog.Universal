@@ -4,6 +4,6 @@ namespace snowcoreBlog.PublicApi.Extensions;
 
 public static class JsonExtensions
 {
-    public static JsonElement ToJsonElement(this object @object, JsonSerializerOptions options) =>
-        JsonSerializer.SerializeToElement(@object, options);
+    public static JsonDocument ToJsonDocument(this object @object, JsonSerializerOptions options) =>
+        JsonSerializer.SerializeToDocument(@object, options);
 }

@@ -13,7 +13,7 @@ public static class ApiResponseExtensions
         if (result is SuccessResult<T> success)
         {
             var dataCount = success.Data is ICollection e ? e.Count : 1;
-            return new(success.Data.ToJsonElement(serializerOptions), dataCount, 0);
+            return new(success.Data.ToJsonDocument(serializerOptions), dataCount, 0);
         }
         else if (result is IErrorResult<T> error)
         {

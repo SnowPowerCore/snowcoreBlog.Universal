@@ -1,5 +1,5 @@
 {
-  "openApiPath": "https://localhost:5050/openapi/v1.json",
+  "openApiPath": "https://localhost/api/readers/openapi/v1.json",
   "namespace": "snowcoreBlog.PublicApi.Api",
   "naming": {
     "useOpenApiTitle": true

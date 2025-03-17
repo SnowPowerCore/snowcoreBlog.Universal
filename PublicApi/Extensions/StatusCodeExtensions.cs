@@ -1,17 +1,17 @@
 ﻿using System.Net;
-using Results;
+using MaybeResults;
 
 namespace snowcoreBlog.PublicApi.Extensions;
 
 public static class StatusCodeExtensions
 {
-    public static int ToStatusCode<T>(this IResult<T> result) where T : notnull
+    public static int ToStatusCode<T>(this IMaybe<T> result) where T : notnull
     {
-        if (result is SuccessResult<T>)
+        if (result is Some<T>)
         {
             return (int)HttpStatusCode.OK;
         }
-        else if (result is IErrorResult<T>)
+        else if (result is INone<T>)
         {
             return (int)HttpStatusCode.BadRequest;
         }

@@ -16,7 +16,7 @@ using snowcoreBlog.PublicApi.BusinessObjects.Dto;
 
 namespace snowcoreBlog.PublicApi.Api
 {
-    [System.CodeDom.Compiler.GeneratedCode("Refitter", "1.5.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Refitter", "1.5.2.0")]
     public partial interface IReaderAccountManagementApi
     {
         /// <param name="requestVerificationToken">A required antiforgery token that has to be sent along the request with implicit cookie as a pair.</param>
@@ -74,6 +74,7 @@ namespace snowcoreBlog.PublicApi.Api
         Task<IApiResponse<ApiResponse>> ConfirmCreateByEmail([Body, AliasAs("ConfirmCreateReaderAccountDto")] ConfirmCreateReaderAccountDto confirmCreateReaderAccountDto, [Header("RequestVerificationToken")] string requestVerificationToken, [RequestOptions] IApizrRequestOptions options);
 
         /// <param name="requestVerificationToken">A required antiforgery token that has to be sent along the request with implicit cookie as a pair.</param>
+        /// <param name="requestCaptcha">A required base64 captcha solution that has to be sent along the request.</param>
         /// <param name="options">The <see cref="IApizrRequestOptions"/> instance to pass through the request.</param>
         /// <returns>
         /// A <see cref="Task"/> representing the <see cref="IApiResponse"/> instance containing the result:
@@ -98,7 +99,7 @@ namespace snowcoreBlog.PublicApi.Api
         /// </returns>
         [Headers("Accept: application/json, application/problem+json")]
         [Post("/login/assertion/v1")]
-        Task<IApiResponse<ApiResponse>> LoginByAssertion([Body, AliasAs("LoginByAssertionDto")] LoginByAssertionDto loginByAssertionDto, [Header("RequestVerificationToken")] string requestVerificationToken, [RequestOptions] IApizrRequestOptions options);
+        Task<IApiResponse<ApiResponse>> LoginByAssertion([Body, AliasAs("LoginByAssertionDto")] LoginByAssertionDto loginByAssertionDto, [Header("RequestVerificationToken")] string requestVerificationToken, [Header("RequestCaptcha")] string requestCaptcha, [RequestOptions] IApizrRequestOptions options);
 
         /// <param name="requestVerificationToken">A required antiforgery token that has to be sent along the request with implicit cookie as a pair.</param>
         /// <param name="options">The <see cref="IApizrRequestOptions"/> instance to pass through the request.</param>

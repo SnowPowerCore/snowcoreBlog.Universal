@@ -11,11 +11,11 @@ namespace snowcoreBlog.PublicApi.Api
     using System;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Http.Resilience;
-    using MediatR;
     using Apizr;
     using Apizr.Extending.Configuring.Common;
 
-  
+
+
     public static partial class IServiceCollectionExtensions
     {
         /// <summary>

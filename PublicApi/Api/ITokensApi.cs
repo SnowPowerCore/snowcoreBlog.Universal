@@ -16,7 +16,7 @@ using snowcoreBlog.PublicApi.BusinessObjects.Dto;
 
 namespace snowcoreBlog.PublicApi.Api
 {
-    [System.CodeDom.Compiler.GeneratedCode("Refitter", "1.5.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Refitter", "1.5.2.0")]
     public partial interface ITokensApi
     {
         /// <param name="options">The <see cref="IApizrRequestOptions"/> instance to pass through the request.</param>

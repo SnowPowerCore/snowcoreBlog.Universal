@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
@@ -18,9 +18,9 @@
 
   <ItemGroup>
     <None Update="**/FodyWeavers.*" Visible="false" />
-    <None Include="$(OutputPath)\$(AssemblyName).dll" Build="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
-    <None Include="$(PkgNewtonsoft_Json)\lib\netstandard2.0\*.dll" Build="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
-    <None Include="snowcoreBlog.ResourceLoading.Implementations.props" Build="true" PackagePath="build" />    
+    <None Include="$(OutputPath)\$(AssemblyName).dll" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    <None Include="$(PkgNewtonsoft_Json)\lib\netstandard2.0\*.dll" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    <None Include="snowcoreBlog.ResourceLoading.Implementations.props" PackagePath="build" />    
   </ItemGroup>
 
   <PropertyGroup>

@@ -1,4 +1,6 @@
-﻿namespace snowcoreBlog.ResourceLoading.Implementations.Models;
+﻿using System.Collections.Generic;
+
+namespace snowcoreBlog.ResourceLoading.Implementations.Internal.Helper;
 
 internal class TranslationData : Dictionary<string, object>
 {

@@ -1,4 +1,6 @@
-﻿using Microsoft.CodeAnalysis;
+﻿using System.IO;
+using System.Linq;
+using Microsoft.CodeAnalysis;
 using snowcoreBlog.ResourceLoading.Implementations.Internal;
 using snowcoreBlog.ResourceLoading.Implementations.Internal.Helper;
 using snowcoreBlog.ResourceLoading.Implementations.Internal.Json;
@@ -38,7 +40,7 @@ public class LocalizeCodeGenerator : IIncrementalGenerator
             foreach (var additionalTexts in pipeline.Left.Left)
             {
                 spc.ReportDiagnostic(Diagnostic.Create(
-                    new DiagnosticDescriptor($"SGL001FOO", "snowcoreBlog.ResourceLoading.Implementations.Generator", 
+                    new DiagnosticDescriptor($"SGL001FOO", "snowcoreBlog.ResourceLoading.Generator", 
                         $"{additionalTexts.First().Path}"
                         , "Source Generators", DiagnosticSeverity.Warning, true),
                     Location.None));

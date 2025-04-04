@@ -1,5 +1,5 @@
 ﻿using Microsoft.CodeAnalysis;
-using snowcoreBlog.ResourceLoading.Implementations.Models;
+using snowcoreBlog.ResourceLoading.Implementations.Internal.Helper;
 
 namespace snowcoreBlog.ResourceLoading.Implementations.Interfaces;
 

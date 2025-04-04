@@ -1,6 +1,6 @@
-﻿namespace snowcoreBlog.ResourceLoading.Models;
+﻿namespace snowcoreBlog.ResourceLoading.Implementations.Models;
 
-public class TranslationData : Dictionary<string, object>
+internal class TranslationData : Dictionary<string, object>
 {
     public IDictionary<string, string> Flatten() => FlattenCore(this, string.Empty);
 

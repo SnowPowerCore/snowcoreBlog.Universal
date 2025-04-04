@@ -22,6 +22,7 @@
     <PackageReference Include="FluentValidation" Version="11.11.0" />
     <PackageReference Include="Ixnas.AltchaNet" Version="1.1.0" />
     <PackageReference Include="Microsoft.Extensions.Http.Resilience" Version="9.3.0" />
+    <PackageReference Include="snowcoreBlog.ResourceLoading" Version="0.0.3" />
     <PackageReference Include="WTorricos.Results" Version="2.0.4" />
   </ItemGroup>
 
@@ -32,6 +33,11 @@
   <ItemGroup>
     <None Update="**/FodyWeavers.*" Visible="false" />
     <None Update="**/.refitter*" Visible="false" />
+    <AdditionalFiles
+      Include="Resources\TranslationResources_*.json"
+      NamespaceName="snowcoreBlog.PublicApi.Resources"
+      ClassName="TranslationResources"
+      NeutralCulture="en" />
   </ItemGroup>
 
 </Project>

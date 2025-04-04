@@ -1,0 +1,7 @@
+{
+    "ValidatorNotNullFailsMessage": "'{PropertyName}' must not be empty.",
+    "ValidatorEmailFormatFailsMessage": "'{PropertyName}' is not a valid email address.",
+    "ValidatorMinimumLengthFailsMessage": "The length of '{PropertyName}' must be at least {MinLength} characters. You entered {TotalLength} characters.",
+    "AuthenticatorTabLabel": "Authenticator app",
+    "AuthenticatorHeaderLabel": "Authenticator app"
+}

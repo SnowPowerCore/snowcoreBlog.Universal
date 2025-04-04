@@ -5,7 +5,7 @@
     <LangVersion>latest</LangVersion>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageOutputPath>E:\Cache\Nuget\packages</PackageOutputPath>
+    <PackageOutputPath>D:\snowcore\.nuget\packages</PackageOutputPath>
     <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
   </PropertyGroup>
@@ -13,7 +13,7 @@
   <PropertyGroup>
     <Title>snowcoreBlog.ResourceLoading</Title>
     <PackageId>snowcoreBlog.ResourceLoading</PackageId>
-    <PackageVersion>0.0.2</PackageVersion>
+    <PackageVersion>0.0.3</PackageVersion>
     <Authors>snowcore</Authors>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Description>Localize strings from json files via static source code generation (C# Source Generators)</Description>

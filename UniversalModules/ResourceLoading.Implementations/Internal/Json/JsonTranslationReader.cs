@@ -12,7 +12,7 @@ internal class JsonTranslationReader(Action<Diagnostic> reportDiagnostic) : ITra
     {
         try
         {
-            var reader = new JsonTextReader(new StringReader(text.GetText()!.ToString())); //TODO bang
+            var reader = new JsonTextReader(new StringReader(text.GetText()!.ToString()));
             return ReadCore(text.Path, reader);
         }
         catch (JsonReaderException ex)

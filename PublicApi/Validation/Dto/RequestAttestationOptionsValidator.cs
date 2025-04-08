@@ -3,9 +3,9 @@ using snowcoreBlog.PublicApi.BusinessObjects.Dto;
 
 namespace snowcoreBlog.PublicApi.Validation.Dto;
 
-public sealed class RequestAttestationOptionsValidation : AbstractValidator<RequestAttestationOptionsDto>
+public sealed class RequestAttestationOptionsValidator : AbstractValidator<RequestAttestationOptionsDto>
 {
-    public RequestAttestationOptionsValidation()
+    public RequestAttestationOptionsValidator()
     {
         RuleFor(x => x.Email).EmailAddress().MinimumLength(3);
         RuleFor(x => x.VerificationToken).NotEmpty();

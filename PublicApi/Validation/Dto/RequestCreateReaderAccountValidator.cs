@@ -4,9 +4,9 @@ using snowcoreBlog.PublicApi.Extensions;
 
 namespace snowcoreBlog.PublicApi.Validation.Dto;
 
-public sealed class RequestCreateReaderAccountValidation : AbstractValidator<RequestCreateReaderAccountDto>
+public sealed class RequestCreateReaderAccountValidator : AbstractValidator<RequestCreateReaderAccountDto>
 {
-    public RequestCreateReaderAccountValidation()
+    public RequestCreateReaderAccountValidator()
     {
         RuleFor(x => x.NickName).NotEmpty().Length(3, 30);
         RuleFor(x => x.Email).EmailAddress().MinimumLength(3);

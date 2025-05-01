@@ -37,26 +37,23 @@ namespace snowcoreBlog.PublicApi.Api
         Task<IApiResponse<ApiResponse>> GetAntiforgeryToken([RequestOptions] IApizrRequestOptions options);
 
         /// <param name="options">The <see cref="IApizrRequestOptions"/> instance to pass through the request.</param>
-        /// <returns>
-        /// A <see cref="Task"/> representing the <see cref="IApiResponse"/> instance containing the result:
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">
+        /// Thrown when the request returns a non-success status code:
         /// <list type="table">
         /// <listheader>
         /// <term>Status</term>
         /// <description>Description</description>
         /// </listheader>
         /// <item>
-        /// <term>200</term>
-        /// <description>Success</description>
-        /// </item>
-        /// <item>
         /// <term>400</term>
         /// <description>Bad Request</description>
         /// </item>
         /// </list>
-        /// </returns>
+        /// </exception>
         [Headers("Accept: application/json, application/problem+json")]
         [Get("/captcha/challenge/v1")]
-        Task<IApiResponse<ApiResponse>> GetAltchaChallenge([RequestOptions] IApizrRequestOptions options);
+        Task<IApiResponse<Ixnas.AltchaNet.AltchaChallenge>> GetAltchaChallenge([RequestOptions] IApizrRequestOptions options);
     }
 
 }

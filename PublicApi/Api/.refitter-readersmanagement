@@ -13,8 +13,10 @@
   "returnIApiResponse": true,
   "responseTypeOverride": {
     "GetAntiforgeryToken": "IApiResponse<ApiResponse>",
-    "GetAltchaChallenge": "IApiResponse<ApiResponse>",
+    "GetAltchaChallenge": "IApiResponse<Ixnas.AltchaNet.AltchaChallenge>",
+	"Ping": "IApiResponse<string>",
     "CheckNickNameNotTaken": "IApiResponse<ApiResponse>",
+	"RequestAuthData": "IApiResponse<ApiResponse>",
     "ConfirmCreateByEmail": "IApiResponse<ApiResponse>",
     "LoginByAssertion": "IApiResponse<ApiResponse>",
     "RequestAssertionOptions": "IApiResponse<ApiResponse>",

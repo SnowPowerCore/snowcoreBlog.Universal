@@ -10,7 +10,7 @@ public static class ApizrResponseExtensions
 
     public static T? ToData<T>(this IApizrResponse<ApiResponse> response, out List<string> errors, JsonSerializerOptions serializerOptions = null) where T : notnull
     {
-        errors = new List<string>(response.Result?.Errors?.Count ?? 1);
+        errors = new List<string>(response.Result?.Errors?.Count ?? 0);
 
         var refitContent = response.ApiResponse?.Error?.Content;
         if (!string.IsNullOrWhiteSpace(refitContent))

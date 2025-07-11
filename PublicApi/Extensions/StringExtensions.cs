@@ -4,8 +4,10 @@ public static class StringExtensions
 {
     public static string TrimEnd(this string target, string trimString)
     {
-        if (target.EndsWith(trimString))
-            return target.Substring(0, target.Length - trimString.Length);
+        ReadOnlySpan<char> targetSpan = target;
+        ReadOnlySpan<char> trimStringSpan = trimString;
+        if (targetSpan.EndsWith(trimStringSpan))
+            return targetSpan.Slice(0, targetSpan.Length - trimStringSpan.Length).ToString();
         return target;
     }
 }

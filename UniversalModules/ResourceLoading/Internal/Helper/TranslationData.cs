@@ -11,7 +11,7 @@ internal class TranslationData : Dictionary<string, object>
         var result = new Dictionary<string, string>();
         foreach (var kvp in translationData)
         {
-            var key = string.IsNullOrEmpty(parentKey) ? kvp.Key : $"{parentKey}::{kvp.Key}";
+            var key = string.IsNullOrWhiteSpace(parentKey) ? kvp.Key : $"{parentKey}::{kvp.Key}";
             if (kvp.Value is TranslationData nested)
             {
                 foreach (var nestedKvp in FlattenCore(nested, key)) 

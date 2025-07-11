@@ -3,12 +3,17 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace snowcoreBlog.PublicApi.Utilities.Dictionary;
 
-public sealed class DictionaryWithDefault<TKey, TValue>(TValue defaultValue) : Dictionary<TKey, TValue> where TKey : notnull
+public sealed class DictionaryWithDefault<TKey, TValue> : Dictionary<TKey, TValue> where TKey : notnull
 {
+    public TValue DefaultValue { get; init; }
+    
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public DictionaryWithDefault() : this(defaultValue: default) { }
+    public DictionaryWithDefault() : this(defaultValue: default, 1) { }
 
-    public TValue DefaultValue { get; init; } = defaultValue;
+    public DictionaryWithDefault(TValue defaultValue, int capacity) : base(capacity)
+    {
+        DefaultValue = defaultValue;
+    }
 
     public new TValue this[[NotNull] TKey key]
     {

@@ -47,7 +47,7 @@ internal class LocalizeCodeGeneratorCore
     private MemberDeclarationSyntax[] ProjectTranslationsToMemberDeclarations(TranslationData translationData, string parentKey = "")
     {
         return (from translation in translationData
-            let key = string.IsNullOrEmpty(parentKey) ? translation.Key : $"{parentKey}::{translation.Key}"
+            let key = string.IsNullOrWhiteSpace(parentKey) ? translation.Key : $"{parentKey}::{translation.Key}"
             select translation.Value switch
             {
                 string value => CreateTranslationAccessProperty(translation.Key, key, value),

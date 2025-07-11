@@ -10,30 +10,39 @@ public static class ApizrResponseExtensions
 
     public static T? ToData<T>(this IApizrResponse<ApiResponse> response, out List<string> errors, JsonSerializerOptions serializerOptions = null) where T : notnull
     {
-        errors = [];
+        errors = new List<string>(response.Result?.Errors?.Count ?? 1);
+
+        var refitContent = response.ApiResponse?.Error?.Content;
+        if (!string.IsNullOrWhiteSpace(refitContent))
+        {
+            var errorResponse = JsonSerializer.Deserialize<ApiResponse?>(refitContent, _serializerOptions);
+            errors.AddRange(errorResponse?.Errors ?? []);
+        }
 
         if (!response.IsSuccess && !response.Exception.Handled)
         {
             errors.Add(response.Exception.Message);
         }
 
-        var data = response.Result;
-        if (data is default(ApiResponse))
+        if (response.Result?.Errors?.Count > 0)
+        {
+            errors.AddRange(response.Result.Errors);
+            errors.TrimExcess();
+            return default;
+        }
+
+        errors.TrimExcess();
+
+        if (response.Result?.DataCount <= 0)
         {
             return default;
         }
 
-        if (data.Errors?.Count > 0)
-        {
-            errors.AddRange(data.Errors);
-            return default;
-        }
-
-        if (data.DataCount <= 0)
+        if (response.Result is default(ApiResponse))
         {
             return default;
         }
 
-        return data.Data!.Deserialize<T>(serializerOptions ?? _serializerOptions);
+        return response.Result.Data!.Deserialize<T>(serializerOptions ?? _serializerOptions);
     }
 }

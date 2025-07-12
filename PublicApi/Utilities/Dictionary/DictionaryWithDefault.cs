@@ -8,7 +8,7 @@ public sealed class DictionaryWithDefault<TKey, TValue> : Dictionary<TKey, TValu
     public TValue DefaultValue { get; init; }
     
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public DictionaryWithDefault() : this(defaultValue: default, 1) { }
+    public DictionaryWithDefault() : this(defaultValue: default, 0) { }
 
     public DictionaryWithDefault(TValue defaultValue, int capacity) : base(capacity)
     {

@@ -13,7 +13,7 @@ public class LocalVersionTrackingService : IVersionTrackingService
 
     private readonly ILocalStorageService _localStorage;
 
-    private static readonly char[] _separator = ['|'];
+    private static readonly char _separator = '|';
 
     private DictionaryWithDefault<string, List<string>> _versionTrail = [];
 

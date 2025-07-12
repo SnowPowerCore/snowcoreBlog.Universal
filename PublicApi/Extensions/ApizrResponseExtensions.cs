@@ -33,12 +33,12 @@ public static class ApizrResponseExtensions
 
         errors.TrimExcess();
 
-        if (response.Result?.DataCount <= 0)
+        if (response.Result is default(ApiResponse))
         {
             return default;
         }
 
-        if (response.Result is default(ApiResponse))
+        if (response.Result.DataCount <= 0)
         {
             return default;
         }

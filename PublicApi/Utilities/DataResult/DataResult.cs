@@ -8,5 +8,5 @@ public sealed record DataResult<TValue>(TValue? Value = default, IReadOnlyList<N
 
     public bool IsFailed => Errors is not default(List<NoneDetail>) && Errors.Count != 0;
 
-    public NoneDetail? Error => (Errors ?? [])[0];
+    public NoneDetail? Error => Errors?[0];
 }

@@ -33,6 +33,14 @@ namespace snowcoreBlog.PublicApi.Api
                 .ConfigureHttpClientBuilder(builder => builder
                     .AddStandardResilienceHandler(config =>
                     {
+                        config.AttemptTimeout = new HttpTimeoutStrategyOptions
+                        {
+                            Timeout = TimeSpan.FromMinutes(1)
+                        };
+                        config.TotalRequestTimeout = new HttpTimeoutStrategyOptions
+                        {
+                            Timeout = TimeSpan.FromMinutes(3)
+                        };
                         config.Retry = new HttpRetryStrategyOptions
                         {
                             UseJitter = true,

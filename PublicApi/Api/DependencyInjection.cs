@@ -14,9 +14,8 @@ namespace snowcoreBlog.PublicApi.Api
     using MediatR;
     using Apizr;
     using Apizr.Extending.Configuring.Common;
-    using Polly.Timeout;
-    using Polly;
 
+  
     public static partial class IServiceCollectionExtensions
     {
         /// <summary>
@@ -34,39 +33,12 @@ namespace snowcoreBlog.PublicApi.Api
                 .ConfigureHttpClientBuilder(builder => builder
                     .AddStandardResilienceHandler(config =>
                     {
-                        // This code changes the default AttemptTimeout and TotalRequestTimeout for an endpoint that has a long-running import operation.
-
                         config.Retry = new HttpRetryStrategyOptions
                         {
                             UseJitter = true,
                             MaxRetryAttempts = 3,
                             Delay = TimeSpan.FromSeconds(0.5)
                         };
-                        
-                        config.AttemptTimeout.TimeoutGenerator = timeoutGenerator(
-                            config.AttemptTimeout.Timeout,
-                            TimeSpan.FromMinutes(1));
-
-                        config.TotalRequestTimeout.TimeoutGenerator = timeoutGenerator(
-                            config.TotalRequestTimeout.Timeout,
-                            config.Retry.MaxRetryAttempts * TimeSpan.FromMinutes(1));
-
-                        Func<TimeoutGeneratorArguments, ValueTask<TimeSpan>> timeoutGenerator(TimeSpan defaultTimeout, TimeSpan importTimeout)
-                        {
-                            return arguments =>
-                            {
-                                // add the using Polly; namespace for GetRequestMessage()
-                                var tryRequestMessage = arguments.Context.GetRequestMessage();
-                                var timeout = tryRequestMessage switch
-                                {
-                                    HttpRequestMessage request when request.RequestUri.AbsolutePath.EndsWith("/import")
-                                                => ValueTask.FromResult(importTimeout),
-                                    _ => ValueTask.FromResult(defaultTimeout),
-                                };
-
-                                return timeout;
-                            };
-                        }
                     }))
                 .WithPriority()
                 .WithMediation()

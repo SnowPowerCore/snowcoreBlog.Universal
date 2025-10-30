@@ -14,9 +14,9 @@
   "responseTypeOverride": {
     "GetAntiforgeryToken": "IApiResponse<ApiResponse>",
     "GetAltchaChallenge": "IApiResponse<Ixnas.AltchaNet.AltchaChallenge>",
-	"Ping": "IApiResponse<string>",
+	  "Ping": "IApiResponse<string>",
     "CheckNickNameNotTaken": "IApiResponse<ApiResponse>",
-	"RequestAuthData": "IApiResponse<ApiResponse>",
+	  "RequestAuthData": "IApiResponse<ApiResponse>",
     "ConfirmCreateByEmail": "IApiResponse<ApiResponse>",
     "LoginByAssertion": "IApiResponse<ApiResponse>",
     "RequestAssertionOptions": "IApiResponse<ApiResponse>",
@@ -93,8 +93,7 @@
     "inlineNamedAny": false,
     "dateFormat": "yyyy-MM-dd",
     "excludedTypeNames": [
-      "ExcludedTypeFoo",
-      "ExcludedTypeBar"
+      ""
     ]
   }
 }

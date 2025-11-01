@@ -6,7 +6,7 @@ namespace snowcoreBlog.PublicApi.Api
     // Please make sure to complete the following steps resulting from your configuration:
     // - dotnet add package Apizr.Integrations.FileTransfer.MediatR, then register MediatR
     // - dotnet add package Apizr.Integrations.Fusillade
-    // - Add your file transfer manager while calling ConfigureSnowcoreBlogBackendReadersManagementApizrManagers method thanks to its options builder parameter
+    // - Add your file transfer manager while calling ConfigureSnowcoreBlogBackendApizrManagers method thanks to its options builder parameter
 
     using System;
     using Microsoft.Extensions.DependencyInjection;
@@ -24,7 +24,7 @@ namespace snowcoreBlog.PublicApi.Api
         /// </summary>
         /// <param name="optionsBuilder">Adjust common shared options</param>
         /// <returns></returns>
-        public static IServiceCollection ConfigureSnowcoreBlogBackendReadersManagementApizrManagers(
+        public static IServiceCollection ConfigureSnowcoreBlogBackendApizrManagers(
             this IServiceCollection services,
             Action<IApizrExtendedCommonOptionsBuilder> optionsBuilder)
         {
@@ -51,6 +51,7 @@ namespace snowcoreBlog.PublicApi.Api
             return services.AddApizr(
                 registry => registry
                   .AddManagerFor<ITokensApi>()
+                  .AddManagerFor<IArticlesApi>()
                   .AddManagerFor<IReaderAccountManagementApi>(),
                 optionsBuilder);
 

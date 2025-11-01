@@ -13,7 +13,7 @@
   "returnIApiResponse": true,
   "responseTypeOverride": {
     "GetAltchaChallenge": "IApiResponse<Ixnas.AltchaNet.AltchaChallenge>",
-	  "Ping": "IApiResponse<string>",
+	"Ping": "IApiResponse<string>",
     "CreateArticle": "IApiResponse<ApiResponse>",
     "GetArticlesCached": "IApiResponse<ApiResponse>"
   },

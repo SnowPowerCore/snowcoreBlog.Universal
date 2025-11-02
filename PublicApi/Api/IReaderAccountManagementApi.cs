@@ -16,7 +16,8 @@ using snowcoreBlog.PublicApi.BusinessObjects.Dto;
 
 namespace snowcoreBlog.PublicApi.Api
 {
-    [System.CodeDom.Compiler.GeneratedCode("Refitter", "1.5.2.0")]
+    /// <summary>No summary available</summary>
+    [System.CodeDom.Compiler.GeneratedCode("Refitter", "1.6.4.0")]
     public partial interface IReaderAccountManagementApi
     {
         /// <param name="requestVerificationToken">A required antiforgery token that has to be sent along the request with implicit cookie as a pair.</param>
@@ -42,7 +43,7 @@ namespace snowcoreBlog.PublicApi.Api
         /// </item>
         /// </list>
         /// </returns>
-        [Headers("Accept: application/json, application/problem+json")]
+        [Headers("Accept: application/json, application/problem+json", "Content-Type: application/json")]
         [Post("/check/nickname/v1")]
         Task<IApiResponse<ApiResponse>> CheckNickNameNotTaken([Body, AliasAs("CheckNickNameNotTakenDto")] CheckNickNameNotTakenDto checkNickNameNotTakenDto, [Header("RequestVerificationToken")] string requestVerificationToken, [RequestOptions] IApizrRequestOptions options);
 
@@ -69,7 +70,7 @@ namespace snowcoreBlog.PublicApi.Api
         /// </item>
         /// </list>
         /// </returns>
-        [Headers("Accept: application/json, application/problem+json")]
+        [Headers("Accept: application/json, application/problem+json", "Content-Type: application/json")]
         [Post("/create/confirm/email/v1")]
         Task<IApiResponse<ApiResponse>> ConfirmCreateByEmail([Body, AliasAs("ConfirmCreateReaderAccountDto")] ConfirmCreateReaderAccountDto confirmCreateReaderAccountDto, [Header("RequestVerificationToken")] string requestVerificationToken, [RequestOptions] IApizrRequestOptions options);
 
@@ -97,7 +98,7 @@ namespace snowcoreBlog.PublicApi.Api
         /// </item>
         /// </list>
         /// </returns>
-        [Headers("Accept: application/json, application/problem+json")]
+        [Headers("Accept: application/json, application/problem+json", "Content-Type: application/json")]
         [Post("/login/assertion/v1")]
         Task<IApiResponse<ApiResponse>> LoginByAssertion([Body, AliasAs("LoginByAssertionDto")] LoginByAssertionDto loginByAssertionDto, [Header("RequestVerificationToken")] string requestVerificationToken, [Header("RequestCaptcha")] string requestCaptcha, [RequestOptions] IApizrRequestOptions options);
 
@@ -154,7 +155,7 @@ namespace snowcoreBlog.PublicApi.Api
         /// </item>
         /// </list>
         /// </returns>
-        [Headers("Accept: application/json, application/problem+json")]
+        [Headers("Accept: application/json, application/problem+json", "Content-Type: application/json")]
         [Post("/request/assertion/v1")]
         Task<IApiResponse<ApiResponse>> RequestAssertionOptions([Body, AliasAs("RequestAssertionOptionsDto")] RequestAssertionOptionsDto requestAssertionOptionsDto, [Header("RequestVerificationToken")] string requestVerificationToken, [RequestOptions] IApizrRequestOptions options);
 
@@ -181,7 +182,7 @@ namespace snowcoreBlog.PublicApi.Api
         /// </item>
         /// </list>
         /// </returns>
-        [Headers("Accept: application/json, application/problem+json")]
+        [Headers("Accept: application/json, application/problem+json", "Content-Type: application/json")]
         [Post("/create/attestation/v1")]
         Task<IApiResponse<ApiResponse>> RequestAttestationOptions([Body, AliasAs("RequestAttestationOptionsDto")] RequestAttestationOptionsDto requestAttestationOptionsDto, [Header("RequestVerificationToken")] string requestVerificationToken, [RequestOptions] IApizrRequestOptions options);
 
@@ -243,7 +244,7 @@ namespace snowcoreBlog.PublicApi.Api
         /// </item>
         /// </list>
         /// </returns>
-        [Headers("Accept: application/json, application/problem+json")]
+        [Headers("Accept: application/json, application/problem+json", "Content-Type: application/json")]
         [Post("/create/request/email/v1")]
         Task<IApiResponse<ApiResponse>> RequestCreateByEmail([Body, AliasAs("RequestCreateReaderAccountDto")] RequestCreateReaderAccountDto requestCreateReaderAccountDto, [Header("RequestVerificationToken")] string requestVerificationToken, [Header("RequestCaptcha")] string requestCaptcha, [RequestOptions] IApizrRequestOptions options);
     }

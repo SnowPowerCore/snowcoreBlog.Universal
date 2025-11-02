@@ -6,7 +6,7 @@ namespace snowcoreBlog.PublicApi.Api
     // Please make sure to complete the following steps resulting from your configuration:
     // - dotnet add package Apizr.Integrations.FileTransfer.MediatR, then register MediatR
     // - dotnet add package Apizr.Integrations.Fusillade
-    // - Add your file transfer manager while calling ConfigureSnowcoreBlogBackendApizrManagers method thanks to its options builder parameter
+    // - Add your file transfer manager while calling ConfigureSnowcoreBlogBackendReadersManagementApizrManagers method thanks to its options builder parameter
 
     using System;
     using Microsoft.Extensions.DependencyInjection;
@@ -24,7 +24,7 @@ namespace snowcoreBlog.PublicApi.Api
         /// </summary>
         /// <param name="optionsBuilder">Adjust common shared options</param>
         /// <returns></returns>
-        public static IServiceCollection ConfigureSnowcoreBlogBackendApizrManagers(
+        public static IServiceCollection ConfigureSnowcoreBlogBackendArticlesApizrManagers(
             this IServiceCollection services,
             Action<IApizrExtendedCommonOptionsBuilder> optionsBuilder)
         {
@@ -51,7 +51,44 @@ namespace snowcoreBlog.PublicApi.Api
             return services.AddApizr(
                 registry => registry
                   .AddManagerFor<ITokensApi>()
-                  .AddManagerFor<IArticlesApi>()
+                  .AddManagerFor<IArticlesApi>(),
+                optionsBuilder);
+
+        }
+
+        /// <summary>
+        /// Register all your Apizr managed apis with common shared options.
+        /// You may call WithConfiguration option to adjust settings to your need.
+        /// </summary>
+        /// <param name="optionsBuilder">Adjust common shared options</param>
+        /// <returns></returns>
+        public static IServiceCollection ConfigureSnowcoreBlogBackendReadersManagementApizrManagers(
+            this IServiceCollection services,
+            Action<IApizrExtendedCommonOptionsBuilder> optionsBuilder)
+        {
+            optionsBuilder ??= _ => { }; // Default empty options if null
+            optionsBuilder += options => options
+                .ConfigureHttpClientBuilder(builder => builder
+                    .AddStandardResilienceHandler(config =>
+                    {
+                        var timeSpan = TimeSpan.FromMinutes(1);
+                        config.AttemptTimeout.Timeout = timeSpan;
+                        config.CircuitBreaker.SamplingDuration = timeSpan * 2;
+                        config.TotalRequestTimeout.Timeout = timeSpan * 3;
+                        config.Retry = new HttpRetryStrategyOptions
+                        {
+                            UseJitter = true,
+                            MaxRetryAttempts = 3,
+                            Delay = TimeSpan.FromSeconds(0.5)
+                        };
+                    }))
+                .WithPriority()
+                .WithMediation()
+                .WithFileTransferMediation();
+            
+            return services.AddApizr(
+                registry => registry
+                  .AddManagerFor<ITokensApi>()
                   .AddManagerFor<IReaderAccountManagementApi>(),
                 optionsBuilder);
 

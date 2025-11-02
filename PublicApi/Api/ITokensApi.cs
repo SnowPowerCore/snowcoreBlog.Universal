@@ -16,7 +16,8 @@ using snowcoreBlog.PublicApi.BusinessObjects.Dto;
 
 namespace snowcoreBlog.PublicApi.Api
 {
-    [System.CodeDom.Compiler.GeneratedCode("Refitter", "1.5.2.0")]
+    /// <summary>No summary available</summary>
+    [System.CodeDom.Compiler.GeneratedCode("Refitter", "1.6.4.0")]
     public partial interface ITokensApi
     {
         /// <param name="options">The <see cref="IApizrRequestOptions"/> instance to pass through the request.</param>
@@ -28,11 +29,20 @@ namespace snowcoreBlog.PublicApi.Api
         /// <description>Description</description>
         /// </listheader>
         /// <item>
-        /// <term>204</term>
-        /// <description>No Content</description>
+        /// <term>200</term>
+        /// <description>Success</description>
+        /// </item>
+        /// <item>
+        /// <term>400</term>
+        /// <description>Bad Request</description>
+        /// </item>
+        /// <item>
+        /// <term>500</term>
+        /// <description>Server Error</description>
         /// </item>
         /// </list>
         /// </returns>
+        [Headers("Accept: application/json, application/problem+json")]
         [Get("/antiforgerytoken/v1")]
         Task<IApiResponse<ApiResponse>> GetAntiforgeryToken([RequestOptions] IApizrRequestOptions options);
 

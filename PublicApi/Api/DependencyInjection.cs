@@ -50,7 +50,7 @@ namespace snowcoreBlog.PublicApi.Api
             
             return services.AddApizr(
                 registry => registry
-                  .AddManagerFor<ITokensApi>()
+                  .AddManagerFor<IArticlesTokensApi>()
                   .AddManagerFor<IArticlesApi>(),
                 optionsBuilder);
 
@@ -88,7 +88,7 @@ namespace snowcoreBlog.PublicApi.Api
             
             return services.AddApizr(
                 registry => registry
-                  .AddManagerFor<ITokensApi>()
+                  .AddManagerFor<IReaderAccountTokensApi>()
                   .AddManagerFor<IReaderAccountManagementApi>(),
                 optionsBuilder);
 

@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using Apizr;
 using snowcoreBlog.PublicApi.Utilities.Api;
 
@@ -6,7 +7,11 @@ namespace snowcoreBlog.PublicApi.Extensions;
 
 public static class ApizrResponseExtensions
 {
-    private static readonly JsonSerializerOptions _serializerOptions = new() { PropertyNameCaseInsensitive = true };
+    private static readonly JsonSerializerOptions _serializerOptions = new()
+    {
+        PropertyNameCaseInsensitive = true,
+        NumberHandling = JsonNumberHandling.AllowReadingFromString
+    };
 
     public static T? ToData<T>(this IApizrResponse<ApiResponse> response, out List<string> errors, JsonSerializerOptions serializerOptions = null) where T : notnull
     {

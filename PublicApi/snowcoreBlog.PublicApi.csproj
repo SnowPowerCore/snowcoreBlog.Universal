@@ -27,7 +27,7 @@
   <ItemGroup>
     <None Update="**/FodyWeavers.*" Visible="false" />
     <None Update="**/.refitter*" Visible="false" />
-    <AdditionalFiles Include="Resources\TranslationResources_*.json" NamespaceName="snowcoreBlog.PublicApi.Resources" ClassName="TranslationResources" NeutralCulture="en" />
+    <Localize Include="Resources\TranslationResources_*.json" NamespaceName="snowcoreBlog.PublicApi.Resources" ClassName="TranslationResources" NeutralCulture="en" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,3 @@
-using System;
-
 namespace snowcoreBlog.PublicApi.BusinessObjects.Dto;
 
 public record CreateArticleResultDto

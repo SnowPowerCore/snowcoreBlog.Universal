@@ -2,7 +2,7 @@
 
 namespace snowcoreBlog.PublicApi.BusinessObjects.Dto;
 
-public sealed record LoginByAssertionDto
+public record LoginByAssertionDto
 {
     public required string Email { get; set; }
 

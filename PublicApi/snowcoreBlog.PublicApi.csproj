@@ -7,21 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Apizr" Version="6.4.2" />
-    <PackageReference Include="Apizr.Extensions.Microsoft.DependencyInjection" Version="6.4.2" />
-    <PackageReference Include="Apizr.Integrations.FileTransfer.MediatR" Version="6.4.2" />
-    <PackageReference Include="Apizr.Integrations.Fusillade" Version="6.4.2" />
-    <PackageReference Include="Apizr.Integrations.MediatR" Version="6.4.2" />
-    <PackageReference Include="Fido2.Models" Version="4.0.0" />
-    <PackageReference Include="Fody" Version="6.9.3">
+    <PackageReference Include="Apizr" />
+    <PackageReference Include="Apizr.Extensions.Microsoft.DependencyInjection" />
+    <PackageReference Include="Apizr.Integrations.FileTransfer.MediatR" />
+    <PackageReference Include="Apizr.Integrations.Fusillade" />
+    <PackageReference Include="Apizr.Integrations.MediatR" />
+    <PackageReference Include="Fido2.Models" />
+    <PackageReference Include="Fody">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="ConfigureAwait.Fody" Version="3.3.2" />
-    <PackageReference Include="FluentValidation" Version="12.1.0" />
-    <PackageReference Include="Ixnas.AltchaNet" Version="1.1.0" />
-    <PackageReference Include="Microsoft.Extensions.Http.Resilience" Version="10.0.0" />
-    <PackageReference Include="WTorricos.Results" Version="2.0.4" />
+    <PackageReference Include="ConfigureAwait.Fody" />
+    <PackageReference Include="FluentValidation" />
+    <PackageReference Include="Ixnas.AltchaNet" />
+    <PackageReference Include="Microsoft.Extensions.Http.Resilience" />
+    <PackageReference Include="WTorricos.Results" />
   </ItemGroup>
 
   <ItemGroup>

@@ -93,6 +93,43 @@ namespace snowcoreBlog.PublicApi.Api
                 optionsBuilder);
 
         }
+
+        /// <summary>
+        /// Register all your Apizr managed apis for Authors Management with common shared options.
+        /// You may call WithConfiguration option to adjust settings to your need.
+        /// </summary>
+        /// <param name="optionsBuilder">Adjust common shared options</param>
+        /// <returns></returns>
+        public static IServiceCollection ConfigureSnowcoreBlogBackendAuthorsManagementApizrManagers(
+            this IServiceCollection services,
+            Action<IApizrExtendedCommonOptionsBuilder> optionsBuilder)
+        {
+            optionsBuilder ??= _ => { }; // Default empty options if null
+            optionsBuilder += options => options
+                .ConfigureHttpClientBuilder(builder => builder
+                    .AddStandardResilienceHandler(config =>
+                    {
+                        var timeSpan = TimeSpan.FromMinutes(1);
+                        config.AttemptTimeout.Timeout = timeSpan;
+                        config.CircuitBreaker.SamplingDuration = timeSpan * 2;
+                        config.TotalRequestTimeout.Timeout = timeSpan * 3;
+                        config.Retry = new HttpRetryStrategyOptions
+                        {
+                            UseJitter = true,
+                            MaxRetryAttempts = 3,
+                            Delay = TimeSpan.FromSeconds(0.5)
+                        };
+                    }))
+                .WithPriority()
+                .WithMediation()
+                .WithFileTransferMediation();
+            
+            return services.AddApizr(
+                registry => registry
+                  .AddManagerFor<IAuthorsManagementApi>(),
+                optionsBuilder);
+
+        }
     }
 }
 

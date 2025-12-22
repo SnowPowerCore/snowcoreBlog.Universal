@@ -46,10 +46,16 @@ public class HttpClientInterceptor : IHttpClientInterceptor
     {
         if (asyncEventHandler == null) return;
 
-        var asyncHandlerTasks = asyncEventHandler.GetInvocationList()
-            .Cast<HttpClientInterceptorEventHandler>()
-            .Select(handler => handler.Invoke(this, args))
-            .ToArray();
+        var invocationList = asyncEventHandler.GetInvocationList();
+        if (invocationList.Length == 0)
+            return;
+
+        var asyncHandlerTasks = new Task[invocationList.Length];
+        for (var i = 0; i < invocationList.Length; i++)
+        {
+            asyncHandlerTasks[i] = ((HttpClientInterceptorEventHandler)invocationList[i]).Invoke(this, args);
+        }
+
         await Task.WhenAll(asyncHandlerTasks);
     }
 }

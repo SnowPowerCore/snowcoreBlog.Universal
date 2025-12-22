@@ -145,7 +145,66 @@ public class LocalVersionTrackingService : IVersionTrackingService
     }
 
     private string[] ReadHistory(string key) =>
-        _localStorage.Get<string>(key)?.Split(_separator, StringSplitOptions.RemoveEmptyEntries) ?? [];
+        SplitHistory(_localStorage.Get<string>(key));
+
+    private static string[] SplitHistory(string? value)
+    {
+        if (string.IsNullOrEmpty(value))
+            return [];
+
+        ReadOnlySpan<char> span = value.AsSpan();
+
+        // First pass: count non-empty segments.
+        var count = 0;
+        var i = 0;
+        while (i < span.Length)
+        {
+            while (i < span.Length && span[i] == _separator)
+                i++;
+
+            if (i >= span.Length)
+                break;
+
+            var next = span.Slice(i).IndexOf(_separator);
+            if (next < 0)
+            {
+                count++;
+                break;
+            }
+
+            count++;
+            i += next + 1;
+        }
+
+        if (count == 0)
+            return [];
+
+        var result = new string[count];
+
+        // Second pass: materialize strings.
+        var resultIndex = 0;
+        i = 0;
+        while (i < span.Length && resultIndex < result.Length)
+        {
+            while (i < span.Length && span[i] == _separator)
+                i++;
+
+            if (i >= span.Length)
+                break;
+
+            var next = span.Slice(i).IndexOf(_separator);
+            if (next < 0)
+            {
+                result[resultIndex++] = span.Slice(i).ToString();
+                break;
+            }
+
+            result[resultIndex++] = span.Slice(i, next).ToString();
+            i += next + 1;
+        }
+
+        return result;
+    }
 
     private void WriteHistory(string key, IEnumerable<string> history) =>
         _localStorage.Set(key, string.Join("|", history));

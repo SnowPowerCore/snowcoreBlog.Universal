@@ -7,6 +7,11 @@ public static class PathHelper
     public static string FileNameWithoutCulture(string path)
     {
         var fileName = Path.GetFileNameWithoutExtension(path);
-        return fileName.Substring(0, fileName.LastIndexOf('_'));
+        var fileNameSpan = fileName.AsSpan();
+        var lastUnderscoreIndex = fileNameSpan.LastIndexOf('_');
+        if (lastUnderscoreIndex < 0)
+            return fileName;
+
+        return fileNameSpan.Slice(0, lastUnderscoreIndex).ToString();
     }
 }

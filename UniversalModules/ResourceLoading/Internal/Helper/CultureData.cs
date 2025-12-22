@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using System.Linq;
 using System.Collections.Generic;
 using Microsoft.CodeAnalysis;
 using snowcoreBlog.ResourceLoading.Implementations.Interfaces;
@@ -22,7 +21,7 @@ internal class CultureData
 
     private static CultureData ResolveCulture(string neutralCulture, AdditionalText additionalText, ITranslationReader translationReader)
     {
-        var cultureId = Path.GetFileNameWithoutExtension(additionalText.Path).Split('_').Skip(1).LastOrDefault();
+        var cultureId = TryGetCultureIdFromPath(additionalText.Path);
 
         if (cultureId == neutralCulture)
             cultureId = InvariantKeyName;
@@ -37,4 +36,23 @@ internal class CultureData
 
     private static string NormalizeCultureIdentifier(string cultureId) =>
         cultureId.ToLower().Replace('-', '_');
+
+    private static string? TryGetCultureIdFromPath(string path)
+    {
+        var fileName = Path.GetFileNameWithoutExtension(path);
+        if (string.IsNullOrEmpty(fileName))
+            return null;
+
+        ReadOnlySpan<char> span = fileName.AsSpan();
+        var firstUnderscore = span.IndexOf('_');
+        if (firstUnderscore < 0)
+            return null;
+
+        var lastUnderscore = span.LastIndexOf('_');
+        var culture = span.Slice(lastUnderscore + 1);
+        if (culture.Length == 0)
+            return null;
+
+        return culture.ToString();
+    }
 }

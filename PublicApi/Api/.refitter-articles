@@ -15,7 +15,8 @@
     "GetAltchaChallenge": "IApiResponse<Ixnas.AltchaNet.AltchaChallenge>",
 	"Ping": "IApiResponse<string>",
     "CreateArticle": "IApiResponse<ApiResponse>",
-    "GetArticlesCached": "IApiResponse<ApiResponse>"
+    "GetArticlesCached": "IApiResponse<ApiResponse>",
+    "GetArticleBySlug": "IApiResponse<ApiResponse>"
   },
   "generateOperationHeaders": true,
   "typeAccessibility": "Public",

@@ -73,6 +73,33 @@ namespace snowcoreBlog.PublicApi.Api
         [Get("/cached/v1")]
         Task<IApiResponse<ApiResponse>> GetArticlesCached([RequestOptions] IApizrRequestOptions options);
 
+        /// <param name="slug">The slug of the article to retrieve.</param>
+        /// <param name="options">The <see cref="IApizrRequestOptions"/> instance to pass through the request.</param>
+        /// <returns>
+        /// A <see cref="Task"/> representing the <see cref="IApiResponse"/> instance containing the result:
+        /// <list type="table">
+        /// <listheader>
+        /// <term>Status</term>
+        /// <description>Description</description>
+        /// </listheader>
+        /// <item>
+        /// <term>200</term>
+        /// <description>Success</description>
+        /// </item>
+        /// <item>
+        /// <term>400</term>
+        /// <description>Bad Request</description>
+        /// </item>
+        /// <item>
+        /// <term>404</term>
+        /// <description>Not Found</description>
+        /// </item>
+        /// </list>
+        /// </returns>
+        [Headers("Accept: application/json, application/problem+json")]
+        [Get("/{slug}/v1")]
+        Task<IApiResponse<ApiResponse>> GetArticleBySlug(string slug, [RequestOptions] IApizrRequestOptions options);
+
         /// <param name="options">The <see cref="IApizrRequestOptions"/> instance to pass through the request.</param>
         /// <returns>
         /// A <see cref="Task"/> representing the <see cref="IApiResponse"/> instance containing the result:

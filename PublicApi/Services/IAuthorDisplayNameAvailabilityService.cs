@@ -1,0 +1,44 @@
+using ActualLab.Fusion;
+using snowcoreBlog.PublicApi.BusinessObjects.Dto;
+
+namespace snowcoreBlog.PublicApi.Services;
+
+/// <summary>
+/// Real-time author display name availability compute service.
+/// <para>
+/// Implemented as a Fusion <see cref="IComputeService"/> on the backend
+/// (<c>snowcoreBlog.Backend.AuthorsManagement</c>) and exposed to clients as a
+/// transparent replica via ActualLab.Rpc. The computed result is cached and
+/// automatically invalidated whenever a display name is claimed (e.g. on
+/// "become an author" account creation), so every connected client observes the
+/// new availability state in real time without manual refresh.
+/// </para>
+/// <para>
+/// Mirrors the pattern of <see cref="INickNameAvailabilityService"/> but checks
+/// uniqueness against the Marten-backed author directory.
+/// </para>
+/// </summary>
+public interface IAuthorDisplayNameAvailabilityService : IComputeService
+{
+    /// <summary>
+    /// Returns the cached, real-time availability of <paramref name="displayName"/>.
+    /// Recomputed on the server only when the value is invalidated
+    /// (see <see cref="NotifyReservedAsync"/>).
+    /// </summary>
+    /// <param name="displayName">Candidate display name (already client-normalized, e.g. trimmed).</param>
+    /// <param name="cancellationToken">Standard cancellation token.</param>
+    [ComputeMethod]
+    Task<AuthorDisplayNameAvailability> GetAsync(string displayName, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Notifies the compute layer that <paramref name="displayName"/> has been
+    /// claimed by a newly created author account, triggering cascading
+    /// invalidation so every dependent <see cref="GetAsync"/> recomputes on
+    /// next access.
+    /// </summary>
+    /// <remarks>
+    /// This is a plain (non-computed) command method invoked from the author
+    /// account creation flow. It is intentionally <b>not</b> exposed over RPC.
+    /// </remarks>
+    Task NotifyReservedAsync(string displayName, CancellationToken cancellationToken = default);
+}

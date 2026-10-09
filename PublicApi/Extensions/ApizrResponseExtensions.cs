@@ -20,8 +20,15 @@ public static class ApizrResponseExtensions
         var refitContent = response.ApiResponse?.Error?.Content;
         if (!string.IsNullOrWhiteSpace(refitContent))
         {
-            var errorResponse = JsonSerializer.Deserialize<ApiResponse?>(refitContent, _serializerOptions);
-            errors.AddRange(errorResponse?.Errors ?? []);
+            try
+            {
+                var errorResponse = JsonSerializer.Deserialize<ApiResponse?>(refitContent, _serializerOptions);
+                errors.AddRange(errorResponse?.Errors ?? []);
+            }
+            catch (JsonException)
+            {
+                errors.Add($"[{(int)response.ApiResponse!.StatusCode}] {refitContent.Trim()}");
+            }
         }
 
         if (!response.IsSuccess && !response.Exception.Handled)

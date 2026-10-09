@@ -19,6 +19,9 @@
 	"RequestAuthData": "IApiResponse<ApiResponse>",
     "ConfirmCreateByEmail": "IApiResponse<ApiResponse>",
     "LoginByAssertion": "IApiResponse<ApiResponse>",
+    "VerifyOneTimeCode": "IApiResponse<ApiResponse>",
+    "SetupAuthenticator": "IApiResponse<ApiResponse>",
+    "ConfirmCreateByAuthenticator": "IApiResponse<ApiResponse>",
     "RequestAssertionOptions": "IApiResponse<ApiResponse>",
     "RequestAttestationOptions": "IApiResponse<ApiResponse>",
     "RequestCreateByEmail": "IApiResponse<ApiResponse>"

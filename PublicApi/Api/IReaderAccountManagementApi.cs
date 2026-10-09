@@ -102,6 +102,22 @@ namespace snowcoreBlog.PublicApi.Api
         [Post("/login/assertion/v1")]
         Task<IApiResponse<ApiResponse>> LoginByAssertion([Body, AliasAs("LoginByAssertionDto")] LoginByAssertionDto loginByAssertionDto, [Header("RequestVerificationToken")] string requestVerificationToken, [Header("RequestCaptcha")] string requestCaptcha, [RequestOptions] IApizrRequestOptions options);
 
+        /// <param name="requestVerificationToken">A required antiforgery token that has to be sent along the request with implicit cookie as a pair.</param>
+        /// <param name="requestCaptcha">A required captcha payload obtained by solving the ALTCHA challenge.</param>
+        [Headers("Accept: application/json, application/problem+json", "Content-Type: application/json")]
+        [Post("/login/totp/verify/v1")]
+        Task<IApiResponse<ApiResponse>> VerifyOneTimeCode([Body, AliasAs("VerifyOneTimeCodeDto")] VerifyOneTimeCodeDto verifyOneTimeCodeDto, [Header("RequestVerificationToken")] string requestVerificationToken, [Header("RequestCaptcha")] string requestCaptcha, [RequestOptions] IApizrRequestOptions options);
+
+        /// <param name="requestVerificationToken">A required antiforgery token that has to be sent along the request with implicit cookie as a pair.</param>
+        [Headers("Accept: application/json, application/problem+json", "Content-Type: application/json")]
+        [Post("/create/totp/setup/v1")]
+        Task<IApiResponse<ApiResponse>> SetupAuthenticator([Body, AliasAs("SetupReaderAccountAuthenticatorDto")] SetupReaderAccountAuthenticatorDto setupReaderAccountAuthenticatorDto, [Header("RequestVerificationToken")] string requestVerificationToken, [RequestOptions] IApizrRequestOptions options);
+
+        /// <param name="requestVerificationToken">A required antiforgery token that has to be sent along the request with implicit cookie as a pair.</param>
+        [Headers("Accept: application/json, application/problem+json", "Content-Type: application/json")]
+        [Post("/create/confirm/totp/v1")]
+        Task<IApiResponse<ApiResponse>> ConfirmCreateByAuthenticator([Body, AliasAs("ConfirmCreateReaderAccountWithAuthenticatorDto")] ConfirmCreateReaderAccountWithAuthenticatorDto confirmCreateReaderAccountWithAuthenticatorDto, [Header("RequestVerificationToken")] string requestVerificationToken, [RequestOptions] IApizrRequestOptions options);
+
         /// <param name="options">The <see cref="IApizrRequestOptions"/> instance to pass through the request.</param>
         /// <returns>
         /// A <see cref="Task"/> representing the <see cref="IApiResponse"/> instance containing the result:

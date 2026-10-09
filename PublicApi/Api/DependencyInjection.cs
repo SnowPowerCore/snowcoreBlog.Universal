@@ -126,6 +126,7 @@ namespace snowcoreBlog.PublicApi.Api
             
             return services.AddApizr(
                 registry => registry
+                  .AddManagerFor<IAuthorsManagementTokensApi>()
                   .AddManagerFor<IAuthorsManagementApi>(),
                 optionsBuilder);
 

@@ -8,6 +8,6 @@ public sealed class LoginByAssertionValidator : AbstractValidator<LoginByAsserti
     public LoginByAssertionValidator()
     {
         RuleFor(x => x.Email).EmailAddress().MinimumLength(3);
-        RuleFor(x => x.AuthenticatorAssertion).NotNull();
+        RuleFor(x => x.AuthenticatorAssertion).NotNull().When(x => x.OneTimeCode is null);
     }
 }

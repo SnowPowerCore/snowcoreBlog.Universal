@@ -15,4 +15,10 @@ public record ArticleDto
     public DateTime? ModifiedAt { get; init; }
     public string[]? Tags { get; init; }
     public string? CoverImageUrl { get; init; }
+    // Free-form category; null = uncategorized.
+    public string? Category { get; init; }
+    // Latest snapshot excerpt; null = derive from content on the client.
+    public string? Excerpt { get; init; }
+    // Latest snapshot SEO meta description; null = fall back to Excerpt.
+    public string? MetaDescription { get; init; }
 }

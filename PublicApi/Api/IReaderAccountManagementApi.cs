@@ -48,33 +48,6 @@ namespace snowcoreBlog.PublicApi.Api
         Task<IApiResponse<ApiResponse>> CheckNickNameNotTaken([Body, AliasAs("CheckNickNameNotTakenDto")] CheckNickNameNotTakenDto checkNickNameNotTakenDto, [Header("RequestVerificationToken")] string requestVerificationToken, [RequestOptions] IApizrRequestOptions options);
 
         /// <param name="requestVerificationToken">A required antiforgery token that has to be sent along the request with implicit cookie as a pair.</param>
-        /// <param name="options">The <see cref="IApizrRequestOptions"/> instance to pass through the request.</param>
-        /// <returns>
-        /// A <see cref="Task"/> representing the <see cref="IApiResponse"/> instance containing the result:
-        /// <list type="table">
-        /// <listheader>
-        /// <term>Status</term>
-        /// <description>Description</description>
-        /// </listheader>
-        /// <item>
-        /// <term>200</term>
-        /// <description>Success</description>
-        /// </item>
-        /// <item>
-        /// <term>400</term>
-        /// <description>Bad Request</description>
-        /// </item>
-        /// <item>
-        /// <term>500</term>
-        /// <description>Server Error</description>
-        /// </item>
-        /// </list>
-        /// </returns>
-        [Headers("Accept: application/json, application/problem+json", "Content-Type: application/json")]
-        [Post("/create/confirm/email/v1")]
-        Task<IApiResponse<ApiResponse>> ConfirmCreateByEmail([Body, AliasAs("ConfirmCreateReaderAccountDto")] ConfirmCreateReaderAccountDto confirmCreateReaderAccountDto, [Header("RequestVerificationToken")] string requestVerificationToken, [RequestOptions] IApizrRequestOptions options);
-
-        /// <param name="requestVerificationToken">A required antiforgery token that has to be sent along the request with implicit cookie as a pair.</param>
         /// <param name="requestCaptcha">A required base64 captcha solution that has to be sent along the request.</param>
         /// <param name="options">The <see cref="IApizrRequestOptions"/> instance to pass through the request.</param>
         /// <returns>
@@ -112,11 +85,6 @@ namespace snowcoreBlog.PublicApi.Api
         [Headers("Accept: application/json, application/problem+json", "Content-Type: application/json")]
         [Post("/create/totp/setup/v1")]
         Task<IApiResponse<ApiResponse>> SetupAuthenticator([Body, AliasAs("SetupReaderAccountAuthenticatorDto")] SetupReaderAccountAuthenticatorDto setupReaderAccountAuthenticatorDto, [Header("RequestVerificationToken")] string requestVerificationToken, [RequestOptions] IApizrRequestOptions options);
-
-        /// <param name="requestVerificationToken">A required antiforgery token that has to be sent along the request with implicit cookie as a pair.</param>
-        [Headers("Accept: application/json, application/problem+json", "Content-Type: application/json")]
-        [Post("/create/confirm/totp/v1")]
-        Task<IApiResponse<ApiResponse>> ConfirmCreateByAuthenticator([Body, AliasAs("ConfirmCreateReaderAccountWithAuthenticatorDto")] ConfirmCreateReaderAccountWithAuthenticatorDto confirmCreateReaderAccountWithAuthenticatorDto, [Header("RequestVerificationToken")] string requestVerificationToken, [RequestOptions] IApizrRequestOptions options);
 
         /// <param name="options">The <see cref="IApizrRequestOptions"/> instance to pass through the request.</param>
         /// <returns>
@@ -235,34 +203,6 @@ namespace snowcoreBlog.PublicApi.Api
         [Headers("Accept: application/json, application/problem+json")]
         [Get("/check/me/v1")]
         Task<IApiResponse<ApiResponse>> RequestAuthData([RequestOptions] IApizrRequestOptions options);
-
-        /// <param name="requestVerificationToken">A required antiforgery token that has to be sent along the request with implicit cookie as a pair.</param>
-        /// <param name="requestCaptcha">A required base64 captcha solution that has to be sent along the request.</param>
-        /// <param name="options">The <see cref="IApizrRequestOptions"/> instance to pass through the request.</param>
-        /// <returns>
-        /// A <see cref="Task"/> representing the <see cref="IApiResponse"/> instance containing the result:
-        /// <list type="table">
-        /// <listheader>
-        /// <term>Status</term>
-        /// <description>Description</description>
-        /// </listheader>
-        /// <item>
-        /// <term>200</term>
-        /// <description>Success</description>
-        /// </item>
-        /// <item>
-        /// <term>400</term>
-        /// <description>Bad Request</description>
-        /// </item>
-        /// <item>
-        /// <term>500</term>
-        /// <description>Server Error</description>
-        /// </item>
-        /// </list>
-        /// </returns>
-        [Headers("Accept: application/json, application/problem+json", "Content-Type: application/json")]
-        [Post("/create/request/email/v1")]
-        Task<IApiResponse<ApiResponse>> RequestCreateByEmail([Body, AliasAs("RequestCreateReaderAccountDto")] RequestCreateReaderAccountDto requestCreateReaderAccountDto, [Header("RequestVerificationToken")] string requestVerificationToken, [Header("RequestCaptcha")] string requestCaptcha, [RequestOptions] IApizrRequestOptions options);
     }
 
 }

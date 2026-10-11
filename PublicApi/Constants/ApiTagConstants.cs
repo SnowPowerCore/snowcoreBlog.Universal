@@ -8,4 +8,5 @@ public sealed class ApiTagConstants
     public const string Persist = nameof(Persist);
     public const string ReaderAccountManagement = nameof(ReaderAccountManagement);
     public const string TechnicalNotifications = nameof(TechnicalNotifications);
+    public const string Documents = nameof(Documents);
 }

@@ -28,7 +28,7 @@ public class DocumentDto
 
     public Dictionary<string, string>? Metadata { get; set; }
 
-    public DateTime UploadedAt { get; set; }
+    public DateTimeOffset UploadedAt { get; set; }
 
-    public DateTime? ProcessedAt { get; set; }
+    public DateTimeOffset? ProcessedAt { get; set; }
 }

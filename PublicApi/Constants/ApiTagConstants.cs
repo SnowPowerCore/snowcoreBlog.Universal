@@ -9,4 +9,5 @@ public sealed class ApiTagConstants
     public const string ReaderAccountManagement = nameof(ReaderAccountManagement);
     public const string TechnicalNotifications = nameof(TechnicalNotifications);
     public const string Documents = nameof(Documents);
+    public const string Administration = nameof(Administration);
 }

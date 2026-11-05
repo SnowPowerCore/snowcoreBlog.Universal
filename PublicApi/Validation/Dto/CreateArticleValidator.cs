@@ -17,7 +17,7 @@ public sealed class CreateArticleValidator : AbstractValidator<CreateArticleDto>
             .MinimumLength(30);
 
         RuleFor(x => x.Tags)
-            .Must(tags => tags is null || tags.Length <= 10)
+            .Must(tags => tags is default(string[]) || tags.Length <= 10)
             .WithMessage("No more than 10 tags are allowed")
             .ForEach(tag => tag.NotEmpty().MaximumLength(50));
 
@@ -40,7 +40,7 @@ public sealed class CreateArticleValidator : AbstractValidator<CreateArticleDto>
 
         RuleForEach(x => x.Authors)
             .NotEqual(Guid.Empty)
-            .When(x => x.Authors is not null);
+            .When(x => x.Authors is not default(Guid[]));
     }
 
     private static bool BeAValidUrl(string? url)

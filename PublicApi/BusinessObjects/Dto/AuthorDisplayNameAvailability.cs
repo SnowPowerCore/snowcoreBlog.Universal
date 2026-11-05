@@ -4,7 +4,7 @@ namespace snowcoreBlog.PublicApi.BusinessObjects.Dto;
 
 /// <summary>
 /// Real-time author display name availability result returned by the
-/// <see cref="PublicApi.Services.IAuthorDisplayNameAvailabilityService"/> Fusion compute service.
+/// <see cref="Services.IAuthorDisplayNameAvailabilityService"/> Fusion compute service.
 /// </summary>
 /// <param name="Status">Coarse availability status (idle/checking/available/taken/invalid).</param>
 /// <param name="CheckedAt">UTC timestamp the underlying check was performed; null while pending.</param>

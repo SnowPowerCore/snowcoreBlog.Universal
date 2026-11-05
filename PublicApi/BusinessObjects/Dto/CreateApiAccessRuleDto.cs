@@ -12,7 +12,7 @@ public record CreateApiAccessRuleDto
 
     public ApiAccessRestrictionActionDto Action { get; init; } = ApiAccessRestrictionActionDto.Block;
 
-    public IReadOnlyCollection<string>? Methods { get; init; }
+    public IReadOnlyCollection<string>? Methods { get; init; } = [];
 
     /// <summary>
     /// Path patterns. Supports:
@@ -20,13 +20,13 @@ public record CreateApiAccessRuleDto
     /// - wildcard '*' (e.g. "/api/articles/*")
     /// - regex with "regex:" prefix (e.g. "regex:^/api/articles/\\d+$")
     /// </summary>
-    public IReadOnlyCollection<string>? PathPatterns { get; init; }
+    public IReadOnlyCollection<string>? PathPatterns { get; init; } = [];
 
-    public IReadOnlyCollection<string>? Tags { get; init; }
+    public IReadOnlyCollection<string>? Tags { get; init; } = [];
 
-    public IReadOnlyCollection<string>? IpRanges { get; init; }
+    public IReadOnlyCollection<string>? IpRanges { get; init; } = [];
 
-    public IReadOnlyCollection<string>? RegionCodes { get; init; }
+    public IReadOnlyCollection<string>? RegionCodes { get; init; } = [];
 
     public Guid? ResponseTemplateId { get; init; }
 

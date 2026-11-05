@@ -11,8 +11,8 @@ public record ArticleDto
     public required Guid[] AuthorUserIds { get; init; }
     // Latest snapshot id referenced by this article
     public required Guid LatestSnapshotId { get; init; }
-    public DateTime? PublishedAt { get; init; }
-    public DateTime? ModifiedAt { get; init; }
+    public DateTimeOffset? PublishedAt { get; init; }
+    public DateTimeOffset? ModifiedAt { get; init; }
     public string[]? Tags { get; init; }
     public string? CoverImageUrl { get; init; }
     // Free-form category; null = uncategorized.

@@ -53,10 +53,10 @@ public record UpdateNotificationDto
     /// <summary>
     /// When this notification becomes active.
     /// </summary>
-    public DateTime? StartDate { get; init; }
+    public DateTimeOffset? StartDate { get; init; }
 
     /// <summary>
     /// When this notification expires.
     /// </summary>
-    public DateTime? EndDate { get; init; }
+    public DateTimeOffset? EndDate { get; init; }
 }

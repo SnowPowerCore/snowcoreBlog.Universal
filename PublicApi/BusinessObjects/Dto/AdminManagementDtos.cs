@@ -66,3 +66,15 @@ public record AdminInviteResolutionDto
 
     public required DateTime ExpiresAtUtc { get; init; }
 }
+
+/// <summary>Successful admin invite revocation (carries no payload).</summary>
+public record RevokeAdminInviteResultDto;
+
+/// <summary>Successful admin login link request (carries no payload).</summary>
+public record RequestAdminLoginLinkResultDto;
+
+/// <summary>Successful admin account soft-delete (carries no payload).</summary>
+public record DeleteAdminAccountResultDto;
+
+/// <summary>Successful admin logout (carries no payload).</summary>
+public record AdminLogoutResultDto;
